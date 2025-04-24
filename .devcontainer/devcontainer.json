@@ -1,12 +1,6 @@
 {
-    "name": "Circom Workshop Environment",
-    "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
-    "features": {
-      "ghcr.io/devcontainers/features/node:1": {
-        "version": "16"
-      }
-    },
-    "postCreateCommand": "bash ./.devcontainer/setup.sh",
+    "name": "Circom Workshop",
+    "image": "mametazk/circom-workshop:latest",
     "customizations": {
       "vscode": {
         "extensions": [
@@ -14,5 +8,7 @@
           "dbaeumer.vscode-eslint"
         ]
       }
-    }
+    },
+    "forwardPorts": [],
+    "postCreateCommand": "echo 'コンテナが正常に作成されました！'"
   }
