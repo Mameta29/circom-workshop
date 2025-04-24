@@ -42,3 +42,11 @@ Generate identity key pair (`identity_secret` and `identity_commitment`):
 ```
 just generate_identity
 ```
+
+# Circom Workshop
+
+## GitHub Codespacesを使った実行方法
+
+1. このリポジトリのページで、「Code」ボタンをクリックし、「Open with Codespaces」を選択します。
+2. 新しいCodespaceが作成され、環境が自動的にセットアップされます。
+3. セットアップ完了後、ターミナルで以下のコマンドを実行してチュートリアルを開始できます：
