@@ -1,23 +1,34 @@
 pragma circom 2.0.0;
 
-include "circomlib/circuits/poseidon.circom";
+include "circomlib/circuits/comparators.circom";
 
-template SignMessage () {
-  signal input identity_secret; 
-  signal input identity_commitment;
-  signal input message;
-  signal output signature;
+template AgeVerification() {
+  // 秘密入力：誕生年
+  signal input birthYear;
+  
+  // 公開入力：確認する年と最低年齢
+  signal input verificationYear;
+  signal input minimumAge;
 
-  // Identity commitment
-  component identityHasher = Poseidon(1);
-  identityHasher.inputs[0] <== identity_secret;
-  identity_commitment === identityHasher.out;
-
-  // Signature
-  component signatureHasher = Poseidon(2);
-  signatureHasher.inputs[0] <== identity_secret;
-  signatureHasher.inputs[1] <== message;
-  signature <== signatureHasher.out;
+  // 現在年が誕生年より後であることを確認する制約
+  component validYearCheck = GreaterEqThan(32); 
+  validYearCheck.in[0] <== verificationYear;
+  validYearCheck.in[1] <== birthYear;
+  validYearCheck.out === 1; // 必ず1（true）でなければならない
+  
+  // 公開出力：年齢条件を満たすかどうか（1=true, 0=false）
+  signal output isLegalAge;
+  
+  // 年齢を計算
+  signal age;
+  age <== verificationYear - birthYear;
+  
+  // 年齢条件を確認（age >= minimumAge）
+  component ageCheck = GreaterEqThan(32); // 32ビットの数値を比較
+  ageCheck.in[0] <== age;
+  ageCheck.in[1] <== minimumAge;
+  
+  isLegalAge <== ageCheck.out;
 }
 
-component main {public [identity_commitment, message]} = SignMessage();
+component main {public [verificationYear, minimumAge]} = AgeVerification();

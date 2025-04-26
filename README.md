@@ -6,7 +6,7 @@
 
 ## 開始方法
 
-### 1. GitHub Code Spaceで開く（推奨）
+## 1. GitHub Code Spaceで開く（推奨）
 
 最も簡単な方法は、GitHub Code Spaceを使用することです：
 
@@ -16,7 +16,38 @@
 
 ブラウザ上で開発環境が立ち上がり、必要なツールが全てインストールされた状態で開始できます。
 
-### 2. ローカル環境で実行する場合
+## 使用コマンド
+### 回路のビルド
+
+```bash
+just build example1
+```
+
+### Trusted Setup（フェーズ1と2）
+
+```bash
+just trusted_setup example1
+```
+
+### Trusted Setup（フェーズ2のみ）
+
+```bash
+just trusted_setup_phase2 example2
+```
+
+### 証明の生成
+
+```bash
+just generate_proof example1
+```
+
+### 証明の検証
+
+```bash
+just verify_proof example1
+```
+
+## 2. ローカル環境で実行する場合
 
 Code Spaceでうまく動作しない場合や、ローカル環境で実行したい場合は、以下の手順で設定できます：
 

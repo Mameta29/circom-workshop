@@ -1,18 +1,23 @@
 pragma circom 2.0.0;
 
-include "circomlib/circuits/poseidon.circom";
+// TODO: circomlibからcomparators.circomをインクルードしてください
 
-template SignMessage () {
-  signal input identity_secret; 
-  signal input identity_commitment;
-  signal input message;
-  signal output signature;
+template AgeVerification() {
+  // TODO: 秘密入力として誕生年を宣言してください
+  
+  // TODO: 公開入力として確認する年と最低年齢を宣言してください
 
-  // Identity commitment
-  // TODO: Create the identity commitment with Poseidon(1)
+  // TODO: 現在年が誕生年より後であることを確認する制約を実装してください
+  // ヒント: GreaterEqThan(32)コンポーネントを使用してください
+  
+  // TODO: 年齢条件を満たすかどうかの出力シグナルを宣言してください
+  
+  // TODO: 年齢を計算するシグナルを宣言し、適切に値を設定してください
+  
+  // TODO: 年齢条件を確認するコンポーネントを実装してください
+  // ヒント: age >= minimumAgeの条件を確認します
 
-  // Signature
-  // TODO: Create the signature with Poseidon(2)
+  // TODO: 出力シグナルに適切な値を設定してください
 }
 
-component main {public [identity_commitment, message]} = SignMessage();
+// TODO: 適切なメインコンポーネントを宣言し、公開入力を指定してください

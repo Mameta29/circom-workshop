@@ -7,8 +7,8 @@ template Multiplier2Alt () {
   signal input b;
   signal output c;
 
-  // If either a or b is 1, in is 0
-  // We check that in is not 0
+  // a または b のいずれかが1の場合、in は0になります
+  // in が0でないことを確認します
   component isZeroCheck = IsZero();
   isZeroCheck.in <== (a - 1) * (b - 1);
   isZeroCheck.out === 0;

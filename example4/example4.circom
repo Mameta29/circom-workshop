@@ -1,28 +1,25 @@
 pragma circom 2.0.0;
 
-include "circomlib/circuits/poseidon.circom";
+// TODO: 必要なライブラリをインクルードしてください
 
-template SignMessage (n) {
-  signal input identity_secret; 
-  signal input identity_commitments[n];
-  signal input message;
-  signal output signature;
+template RegionalAgeVerification() {
+  // TODO: 秘密入力として誕生年を宣言してください
+  
+  // TODO: 公開入力として確認する年、国/地域コード(regionCode)を宣言してください
+  // 国/地域コード: 1=日本(20歳)、2=アメリカ(21歳)、3=ドイツ(18歳)
 
-  // Identity commitment
-  component identityHasher = Poseidon(1);
-  identityHasher.inputs[0] <== identity_secret;
-  signal myIdentity <== identityHasher.out;
-
-  // Signature
-  component signatureHasher = Poseidon(2);
-  signatureHasher.inputs[0] <== identity_secret;
-  signatureHasher.inputs[1] <== message;
-  signature <== signatureHasher.out;
-
-  // Membership check
-  // Assuming three identities in total
-  // TODO: Implement membership check
-  // NOTE: We want to prove that our identity is one of the three
+  // TODO: 現在年が誕生年より後であることを確認する制約を実装してください
+  
+  // TODO: 公開出力として年齢条件を満たすかどうかのシグナルを宣言してください
+  
+  // TODO: 年齢を計算するシグナルを宣言してください
+  
+  // TODO: 地域に応じた最低年齢を決定するシグナルを宣言してください
+  // ヒント: if/elseは使えないので、式で表現する必要があります
+  
+  // TODO: 年齢条件を確認するコンポーネントを実装してください
+  
+  // TODO: 出力シグナルに適切な値を設定してください
 }
 
-component main {public [identity_commitments, message]} = SignMessage(3);
+// TODO: 適切なメインコンポーネントを宣言し、公開入力を指定してください
